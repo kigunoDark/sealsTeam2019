@@ -1,5 +1,5 @@
 body {
-    background: #fcfcfc;
+    background: #f3ffdc;
 }
 
 nav {
@@ -19,7 +19,11 @@ nav {
     margin-top: 10%;
     margin-bottom: 10%;
     padding: 5%;
-    border-radius: 2%;
+    border-radius: 1%;
+    box-shadow: 1px 6px 6px 1px #ccc; 
+    padding-bottom: 10%;
+    padding-right:10%; 
+    padding-left:10%;  
 }
 
 .page-footer {
@@ -34,8 +38,6 @@ nav {
     margin-bottom: 5%;
 }
 
-<<<<<<< HEAD
-=======
 
 /*  Мои стили*/
 
@@ -228,4 +230,3 @@ nav a {
         min-width: 350px;
     }
 }
->>>>>>> Sergey
