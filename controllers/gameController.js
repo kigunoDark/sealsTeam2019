@@ -195,7 +195,7 @@ exports.postFish = ( req, res) =>{
                                                                                   <td width="auto" align="center" valign="middle" height="30" style=" background-color:#0db9ea; border-top-left-radius:4px; border-bottom-left-radius:4px;border-top-right-radius:4px; border-bottom-right-radius:4px; background-clip: padding-box;font-size:13px; font-family:Helvetica, arial, sans-serif; text-align:center;  color:#ffffff; font-weight: 300; padding-left:18px; padding-right:18px;">
                                                                                   
                                                                                      <span style="color: #ffffff; font-weight: 300;">
-                                                                                        <a style="color: #ffffff; text-align:center;text-decoration: none;" href="#">Читать дальше</a>
+                                                                                        <a style="color: #ffffff; text-align:center;text-decoration: none;" href="http://localhost:3000/acceptFish">Читать дальше</a>
                                                                                      </span>
                                                                                   </td>
                                                                                </tr>
@@ -246,9 +246,12 @@ exports.postFish = ( req, res) =>{
           </div>
           
           </body></html>`,
-                
-
-            }); 
+    }); 
          
        
+}
+
+
+exports.getAcceptFishing = (req, res) => {
+    res.render('./moks/acceptFishing');
 }
