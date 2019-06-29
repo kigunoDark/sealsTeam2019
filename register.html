@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./paasChecker.js"></script>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body> 
+        <span>Пароль:</span>       
+        <input oninput="passChecker.check(this.value)" type="text" name="pass" class="input-text" maxlength="250" value="">
+           
+        <div class="pass-checker_info" id="passResult" style="display: block;">
+            <div class="pass-checker_info__reason">
+                Результат: <span id="check-reason" style="color: rgb(198, 0, 0);">ненадёжный</span>
+            </div>
+            <div class="pass-checker_info__time" style="color: rgb(198, 0, 0);">
+                Ваш пароль может быть взломан за&nbsp;&nbsp;<span id="resStr">0 секунд</span>
+            </div>
+            <div class="pass-checker_info__warn">
+                <span id="pass-warn-msg"></span>
+            </div>
+        </div>
+    
+</body>
+</html>
