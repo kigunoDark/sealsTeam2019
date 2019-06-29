@@ -107,39 +107,9 @@ exports.postMoksland = async (req, res) => {
 
             console.log('MOKS this is a new user: ' + req.body.name + ' ' + req.body.avatar + " " + hash + ' ' + req.body.email);
             
-            // UserM.sync({force: true}).then(() => {
-            //     // Table created
-            //     UserM.create({
-            //         name:req.body.name,
-            //         password:hash,
-            //         avatar:req.body.avatar,
-            //         email:req.body.email,
-            //         phone:req.body.phone + '',
-            //         cookie:cookie
-            //     })
-            //     .then(user => {
-            //         console.log(`MOKS this is a new user: 
-            //         NAME: ${user.name} 
-            //         AVATAR: ${user.avatar}
-            //         PASSWORD: ${hash}
-            //         EMAIL: ${user.email}
-            //         phone: ${user.phone}
-            //         link: ${user.link}
-            //         score:${user.score}`);
-    
-            //         res.cookie('seals',cookie, { maxAge:86400000, httpOnly: true });
-            //         res.status(201).send('ok');
-            //     })
-            //     .catch(err =>{
-            //         res.render('moks/moks', {
-            //             msg: err
-            //           });
-            //         console.log(err);
-            //     });
-            //   });
-
-
-            UserM.create({
+            UserM.sync({force: true}).then(() => {
+                // Table created
+                UserM.create({
                     name:req.body.name,
                     password:hash,
                     avatar:req.body.avatar,
@@ -153,7 +123,9 @@ exports.postMoksland = async (req, res) => {
                     AVATAR: ${user.avatar}
                     PASSWORD: ${hash}
                     EMAIL: ${user.email}
-                    phone: ${user.phone}`);
+                    phone: ${user.phone}
+                    link: ${user.link}
+                    score:${user.score}`);
     
                     res.cookie('seals',cookie, { maxAge:86400000, httpOnly: true });
                     res.status(201).send('ok');
@@ -164,6 +136,34 @@ exports.postMoksland = async (req, res) => {
                       });
                     console.log(err);
                 });
+              });
+
+
+            // UserM.create({
+            //         name:req.body.name,
+            //         password:hash,
+            //         avatar:req.body.avatar,
+            //         email:req.body.email,
+            //         phone:req.body.phone + '',
+            //         cookie:cookie
+            //     })
+            //     .then(user => {
+            //         console.log(`MOKS this is a new user: 
+            //         NAME: ${user.name} 
+            //         AVATAR: ${user.avatar}
+            //         PASSWORD: ${hash}
+            //         EMAIL: ${user.email}
+            //         phone: ${user.phone}`);
+    
+            //         res.cookie('seals',cookie, { maxAge:86400000, httpOnly: true });
+            //         res.status(201).send('ok');
+            //     })
+            //     .catch(err =>{
+            //         res.render('moks/moks', {
+            //             msg: err
+            //           });
+            //         console.log(err);
+            //     });
         
         }
     
