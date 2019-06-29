@@ -3,7 +3,7 @@ const sequelize = require('../data/database');
 
 
 const User = sequelize.define(
-    'luser', {
+    'newluser', {
         id: {
             type: Sequelize.INTEGER,
             autoIncrement: true,
@@ -33,6 +33,16 @@ const User = sequelize.define(
         phone:{
             type:Sequelize.TEXT,
             allowNull:false
+        },
+        link:{
+            type:Sequelize.TEXT,
+            allowNull:false,
+            defaultValue:'none'
+        },
+        score:{
+            type:Sequelize.INTEGER,
+            allowNull:false,
+            defaultValue:0
         }
     }
 );
