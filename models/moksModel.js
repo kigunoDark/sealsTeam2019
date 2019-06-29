@@ -40,9 +40,9 @@ const User = sequelize.define(
             defaultValue:'none'
         },
         score:{
-            type:Sequelize.INTEGER,
+            type:Sequelize.TEXT,
             allowNull:false,
-            defaultValue:0
+            defaultValue:'0'
         }
     }
 );

@@ -99,6 +99,7 @@ exports.postMoksland = async (req, res) => {
             .digest('hex');
 
             console.log('MOKS this is a new user: ' + req.body.name + ' ' + req.body.avatar + " " + hash + ' ' + req.body.email);
+            
             // UserM.sync({force: true}).then(() => {
             //     // Table created
             //     UserM.create({
@@ -116,7 +117,8 @@ exports.postMoksland = async (req, res) => {
             //         PASSWORD: ${hash}
             //         EMAIL: ${user.email}
             //         phone: ${user.phone}
-            //         link: ${user.link}`);
+            //         link: ${user.link}
+            //         score:${user.score}`);
     
             //         res.cookie('seals',cookie, { maxAge:86400000, httpOnly: true });
             //         res.status(201).send('ok');
@@ -128,6 +130,8 @@ exports.postMoksland = async (req, res) => {
             //         console.log(err);
             //     });
             //   });
+
+
             UserM.create({
                     name:req.body.name,
                     password:hash,
