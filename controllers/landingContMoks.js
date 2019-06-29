@@ -53,8 +53,15 @@ async function isLoggedIn (req) {
     return result;
 };
 
+
+exports.getReginster = (req, res) => {
+    res.render('moks/userRegister',{
+        msg: null
+    });
+}
+
 exports.getMoksLand = async (req, res) => {
-    res.render('moks/moks', {
+    res.render('moks/landing', {
         msg: null
     });
 };
