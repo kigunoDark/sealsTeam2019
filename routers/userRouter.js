@@ -10,7 +10,7 @@ const landingControlMoks = require('../controllers/landingContMoks');
 //My(MAKSIM) Test Code
 router.get('/user',landingControlMoks.authentication);
 router.get('/logout',landingControlMoks.logout);
-router.get('/loginmoks',landingControlMoks.getLogin);
+router.get('/user-login',landingControlMoks.getLogin);
 router.get('/', landingControlMoks.getMoksLand);
 router.get('/moks/:name',landingControlMoks.getAvatar);
 router.get('/user-register', landingControlMoks.getReginster);

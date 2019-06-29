@@ -1,5 +1,5 @@
-body{
-    background: #fcfcfc;
+body {
+    background: #f3ffdc;
 }
 
 nav{
@@ -18,7 +18,11 @@ nav{
     margin-top: 10%;
     margin-bottom: 10%;
     padding: 5%;
-    border-radius: 2%;  
+    border-radius: 1%;
+    box-shadow: 1px 6px 6px 1px #ccc; 
+    padding-bottom: 10%;
+    padding-right:10%; 
+    padding-left:10%;  
 }
 
 .page-footer{
@@ -31,4 +35,197 @@ nav{
     color: #61da70; 
     margin-top: 5%; 
     margin-bottom: 5%;
+}
+
+
+/*  Мои стили*/
+
+.top-navbar a {
+    color: #949494;
+}
+
+.mail-program__mail-name {
+    padding-left: 1rem;
+}
+
+.mail-program__mail-sender {
+    padding-right: 5rem;
+}
+
+.img-main-background {
+    background-image: url("../img/1020_preobrazovanny.png");
+    background-size: contain;
+    background-position-x: 70%;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+
+}
+
+.main-img {
+    padding-left: 30%;
+    width: auto;
+    height: 100vh;
+}
+
+.main-img-button {
+    background-color: #ff2c9c;
+    border-radius: 10px;
+    min-width: 170px;
+}
+
+.header-block {
+    position: absolute;
+    top: 5%;
+    left: 10%;
+}
+
+.header-block__h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: white;
+}
+
+.header-block__h2 {
+    font-size: 2rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: white;
+}
+
+.header-block__paragraph {
+    color: white;
+    /*  word-break: break-all; */
+}
+
+.container-main-page {
+    background-image: url("../img/background-matrix2_1048-2859.jpg");
+    background-size: contain;
+}
+
+.main-page-nav {
+    position: relative;
+}
+
+.main-page-nav__img {
+    /*  position: absolute;
+    left: 0;
+    bottom: -20px; */
+    width: 130px;
+
+}
+
+.main-page-nav .brand-logo__link {
+    position: absolute;
+    left: 0;
+    bottom: -30px;
+    width: 130px;
+    display: flex;
+}
+
+
+.logo-text {
+    font-family: 'Open Sans', sans-serif;
+    color: black;
+    font-size: 3rem;
+
+}
+
+.logo-text__inner-span {
+    color: #61da70
+}
+
+nav a {
+    color: #949494
+}
+
+/* media query */
+
+@media screen and (max-width: 992px) {
+    /*   .brand-logo__link {
+      left: 20% !important;
+  
+    } */
+
+    .img-main-background {
+        background-image: none;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .header-block__h1 {
+        display: block;
+        font-size: 2rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        color: white;
+        text-align: center;
+    }
+
+    .header-block__h2 {
+        font-size: 1.2rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        color: white;
+        text-align: center;
+    }
+
+    .header-block {
+        position: absolute;
+        width: 100%;
+        top: 5%;
+        left: 0;
+        /* min-width: 600px; */
+    }
+
+    left .header-block__paragraph {
+        color: white;
+        text-align: center;
+    }
+
+    .main-img-button {
+        margin: auto;
+        display: block;
+        width: 30%;
+    }
+
+    .header-block__paragraph {
+        text-align: center;
+    }
+
+    .main-page-nav .brand-logo__link {
+        left: 20%;
+        bottom: -40px;
+        width: 100px;
+    }
+
+
+    .logo-text {
+        font-size: 2.5rem;
+
+    }
+
+
+}
+
+@media screen and (max-width: 450px) {
+    .main-page-nav .brand-logo__link {
+        left: 30%;
+        bottom: -20px;
+    }
+
+    .main-page-nav__img {
+        width: 100px;
+    }
+
+    .logo-text {
+        font-size: 2rem;
+
+    }
+
+    body {
+        min-width: 350px;
+    }
 }

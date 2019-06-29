@@ -1,13 +1,18 @@
 
-<h1> Регистрация </h1>
-<% if (msg) { %>
-  <h2><%= msg %></h2>
-<% } %>
-<form action="/moks" method="POST" enctype="multipart/form-data" > 
-    <input placeholder="name" name="name"/><br>
-    <input placeholder="password" name="password"/><br><br>
-    <input name="avatar" type="file" accept='image/png, image/jpeg'><br><br>
-    <input type="email" name="email"  placeholder="email"><br>
-    <input type="number" name="phone" placeholder="phone number">
-    <button type="submit"> Принять </button>
-<form>  
+<%- include('../layouts/navbar.ejs')%>
+
+<div class="container fishingform">
+    <h1> Регистрация </h1>
+    <% if (msg) { %>
+    <h2><%= msg %></h2>
+    <% } %>
+    <form action="/moks" method="POST" enctype="multipart/form-data" > 
+        <input placeholder="name" name="name"/><br>
+        <input placeholder="password" name="password"/><br><br>
+        <input name="avatar" type="file" accept='image/png, image/jpeg'><br><br>
+        <input type="email" name="email"  placeholder="email"><br>
+        <input type="number" name="phone" placeholder="phone number">
+        <button type="submit"> Принять </button>
+    </form>  
+</div>
+<%- include('../layouts/footer.ejs')%>
