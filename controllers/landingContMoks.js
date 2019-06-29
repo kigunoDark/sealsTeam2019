@@ -5,6 +5,7 @@ const path = require('path');
 const uuid = require('uuidv4');
 
 
+
 // this is my(MOKS) JOB
 
 //seting for multer 
@@ -166,3 +167,4 @@ exports.logout = async  (req,res) => {
     res.clearCookie('seals');
     res.redirect('/');
 };
+

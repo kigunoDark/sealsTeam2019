@@ -1,0 +1,14 @@
+<%- include('../layouts/navbar.ejs')%>
+
+<div class="container fishingform">
+    <h1> Поймай своего друга! </h1>
+    <form action="/frend-fish" method="POST"> 
+        <input placeholder="Имя друга" name="name"/> 
+        <input placeholder="Фамилия друга" name="surname"/><br><br>
+        <input  placeholder="Хобби" name="hobby"/><br><br> 
+        <button type="submit"> Принять </button>
+    <form>  
+</div>
+
+
+<%- include('../layouts/footer.ejs')%>

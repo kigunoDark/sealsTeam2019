@@ -4,6 +4,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const testRouter = require('./routers/userRouter');
+const gameRouter = require('./routers/gameRouter');
 
 
 app.set('view engine', 'ejs');
@@ -13,6 +14,7 @@ app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended:true}));
 
 app.use(testRouter);
+app.use(gameRouter);
 
 app.use(function(req, res, next){
     res.status(404);
