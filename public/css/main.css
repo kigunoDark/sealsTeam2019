@@ -37,8 +37,15 @@ nav {
     margin-top: 5%;
     margin-bottom: 5%;
 }
-
-
+::placeholder{
+    color:#61da70;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.title{
+    text-transform: uppercase;
+    font-weight: bold;
+}
 /*  Мои стили*/
 
 .top-navbar a {
