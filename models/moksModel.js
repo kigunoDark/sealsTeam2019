@@ -3,7 +3,7 @@ const sequelize = require('../data/database');
 
 
 const User = sequelize.define(
-    'muser', {
+    'luser', {
         id: {
             type: Sequelize.INTEGER,
             autoIncrement: true,
@@ -23,6 +23,14 @@ const User = sequelize.define(
             defaultValue: 'avatar.jpg'
         },
         cookie:{
+            type:Sequelize.TEXT,
+            allowNull:false
+        },
+        email:{
+            type:Sequelize.TEXT,
+            allowNull:false
+        },
+        phone:{
             type:Sequelize.TEXT,
             allowNull:false
         }
