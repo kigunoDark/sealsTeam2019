@@ -97,29 +97,33 @@ exports.postMoksland = async (req, res) => {
             .update(uuid())
             .digest('hex');
 
-            console.log('MOKS this is a new user: ' + req.body.name + ' ' + req.body.avatar + " " + hash);
-            
+            console.log('MOKS this is a new user: ' + req.body.name + ' ' + req.body.avatar + " " + hash + ' ' + req.body.email);
             UserM.create({
-                name:req.body.name,
-                password:hash,
-                avatar:req.body.avatar,
-                cookie:cookie
-            })
-            .then(user => {
-                console.log(`MOKS this is a new user: 
-                NAME: ${user.name} 
-                AVATAR: ${user.avatar}
-                PASSWORD: ${hash}`);
-
-                res.cookie('seals',cookie, { maxAge:86400000, httpOnly: true });
-                res.status(201).send('ok');
-            })
-            .catch(err =>{
-                res.render('moks/moks', {
-                    msg: err
-                  });
-                console.log(err);
-            });
+                    name:req.body.name,
+                    password:hash,
+                    avatar:req.body.avatar,
+                    email:req.body.email,
+                    phone:req.body.phone + '',
+                    cookie:cookie
+                })
+                .then(user => {
+                    console.log(`MOKS this is a new user: 
+                    NAME: ${user.name} 
+                    AVATAR: ${user.avatar}
+                    PASSWORD: ${hash}
+                    EMAIL: ${user.email}
+                    phone: ${user.phone}`);
+    
+                    res.cookie('seals',cookie, { maxAge:86400000, httpOnly: true });
+                    res.status(201).send('ok');
+                })
+                .catch(err =>{
+                    res.render('moks/moks', {
+                        msg: err
+                      });
+                    console.log(err);
+                });
+        
         }
     
     });
