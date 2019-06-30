@@ -7,4 +7,7 @@ router.get('/acceptFish', gameControl.getAcceptFishing);
 router.get('/index', gameControl.getMenu);
 router.post('/frend-fish',  gameControl.postFish);
 
+//test
+router.get('/friend/:link', gameControl.getFishPage);
+
 module.exports =  router;

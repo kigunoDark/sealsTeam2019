@@ -1,13 +1,13 @@
 <%- include('../layouts/navbar.ejs')%>
 <div class="container fishingform">
-  <h1> Войти </h1>
+  <h3 class="title center" > Войти </h3>
   <% if (msg) { %>
     <h2><%= msg %></h2>
   <% } %>
-  <form action="/loginmoks" method="POST"  > 
+  <form id="login" action="/loginmoks" method="POST"  > 
       <input placeholder="name" name="name"/> 
-      <input placeholder="password" name="password"/><br><br>
-      <button type="submit"> Принять </button>
+      <input type="password" placeholder="password" name="password"/><br><br>
+       <a class="right waves-effect waves-light btn reg-button" href="javascript:{}" onclick="document.getElementById('login').submit();">Принять</a>
   </form>  
 </div>
 <%- include('../layouts/footer.ejs')%>
