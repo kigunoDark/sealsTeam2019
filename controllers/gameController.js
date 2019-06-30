@@ -314,8 +314,11 @@ exports.getAcceptFishing = (req, res) => {
     res.render('./moks/acceptFishing');
 }
 
-exports.getMenu = (req,res) => {
-   res.render('./moks/index')
+exports.getMenu = async  (req,res) => {
+   let userMain = await isLoggedIn(req);
+   res.render('./moks/index',{
+      userMain
+   })
 }
 //authentication  function
 async function isLoggedIn (req) {
