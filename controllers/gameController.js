@@ -310,6 +310,13 @@ exports.getFishPage = async (req,res) => {
        
 };
 
+exports.getAcceptFishing = (req, res) => {
+    res.render('./moks/acceptFishing');
+}
+
+exports.getMenu = (req,res) => {
+   res.render('./moks/index')
+}
 //authentication  function
 async function isLoggedIn (req) {
     const result = {};
