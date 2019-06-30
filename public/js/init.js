@@ -2,8 +2,8 @@
   $(function() {
     $('.sidenav').sidenav();
     $('.parallax').parallax();
-    $('.main-page-nav__img').on('click', function() {
-      $(this).attr('data-after', 'bar');
-    });
+    /*  $('.brand-logo.brand-logo__link').on('click', function() {
+      $(this).attr('data-before', '56');
+    }); */
   }); // end of document ready
 })(jQuery); // end of jQuery name space
