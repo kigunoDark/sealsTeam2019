@@ -138,6 +138,7 @@ nav {
     border-radius: 10px;
     min-width: 170px;
     font-weight: 800;
+    margin-top: 4%; 
 }
 
 .reg-button {
@@ -155,7 +156,7 @@ nav {
 }
 
 .header-block__h1 {
-    font-size: 3rem;
+    font-size: 4rem;
     font-weight: 800;
     text-transform: uppercase;
     color: white;
@@ -167,9 +168,19 @@ nav {
     text-transform: uppercase;
     color: white;
 }
+.her{
+    margin-bottom: -20px;
+}
+
+.hacker{
+    color: #61da70;
+    
+}
+
 
 .header-block__paragraph {
     color: white;
+    font-size: 24px;
     /*  word-break: break-all; */
 }
 
