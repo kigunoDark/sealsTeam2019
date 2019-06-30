@@ -13,8 +13,8 @@ router.get('/', userController.getMainPage);
 
 router.get('/login',userController.getLogin);
 router.post('/login',userController.postLogin);
-
 router.get('/logout',userController.getLogout);
+
 
 
 router.get('/register', userController.getReginster);

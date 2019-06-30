@@ -2968,8 +2968,8 @@ ul.staggered-list li {
   font-weight: bold;
   text-transform: uppercase;
   font-size: 18px;
-  color: rgba(255, 255, 255, 0.8);
-  background-color: rgba(110, 108, 108, 0.08);
+  color: rgb(255, 255, 255);
+  background-color: rgb(255, 255, 255);
   
 }
 

@@ -10,7 +10,12 @@ const transporter = nodemailer.createTransport(sendgridTransport({
     }
 }));
 
-
+exports.getFishingPageLesson = async (req, res) => {
+   const userMain = await isLoggedIn(req);
+    res.render('./moks/fishingLesson',{
+       userMain
+    });
+}
 exports.getFishing = async(req, res) => {
     const userMain = await isLoggedIn(req);
     if(userMain.status){
