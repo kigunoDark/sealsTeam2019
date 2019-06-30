@@ -59,7 +59,7 @@ async function isLoggedIn (req) {
 
 
 exports.getReginster = async (req, res) => {
-    const userMain =await isLoggedIn(req);
+    const userMain = await isLoggedIn(req);
     res.render('moks/userRegister',{
         userMain,
         msg: null
