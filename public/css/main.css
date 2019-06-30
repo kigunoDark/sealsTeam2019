@@ -1,4 +1,6 @@
 @import url("./timeline.css");
+@import url("./inputPassword.css");
+@import url("./passwordPage.css");
 
 body {
     background: #fcfcfc;
