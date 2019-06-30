@@ -60,6 +60,9 @@ async function isLoggedIn (req) {
 
 exports.getReginster = async (req, res) => {
     const userMain =await isLoggedIn(req);
+    if(userMain.status){
+        res.redirect('/ciberlexa');
+    };
     res.render('moks/userRegister',{
         userMain,
         msg: null
