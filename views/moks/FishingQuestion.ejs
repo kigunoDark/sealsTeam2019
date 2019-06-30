@@ -1,0 +1,41 @@
+<%- include('../layouts/navbar.ejs')%>
+
+<div class="container  fishing-questions-wrapper">
+<form action="#">
+<% fishingQuestions.forEach(function(fishingQuestion, index){ %>
+<div class="question-wrapper card center">
+
+  <div>
+    <h5><%= fishingQuestion.question %></h5>
+    <img src="<%= fishingQuestion.image %>" class="card fishing-question-img" alt="<%= fishingQuestion.image %>"/>
+  </div>
+  <div class="center" class="answers-form">
+    
+    <div class="form-answer-container ">
+    <% fishingQuestion.answers.forEach(function(ans, i){ %> 
+
+      <label class="questions-labels">
+        <input type="checkbox" data-key="<%= ans.indexOf(ans[i]) %>" data-question="<%= index %>"/>
+        <span><%= ans %></span>
+      </label>
+     
+  <% }); %>
+   </div>
+ 
+ 
+   </div>
+    
+   </div>
+  <% }); %>
+   <button class="form-questions-button btn waves-effect waves-light" type="submit" name="action">Отправить
+    <i class="material-icons right">send</i>
+  </button>
+ 
+    </form>
+  </div>
+
+
+
+
+
+<%- include('../layouts/footer.ejs')%>

@@ -1,6 +1,7 @@
 @import url("./timeline.css");
 @import url("./inputPassword.css");
 @import url("./passwordPage.css");
+@import url("./fishingQuestions.css");
 
 .password-section__main-text {
     text-align: justify;

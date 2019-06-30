@@ -1,63 +1,62 @@
 const UserM = require('../models/moksModel');
 const uuid = require('uuidv4');
 const nodemailer = require('nodemailer');
-const sendgridTransport= require('nodemailer-sendgrid-transport');
+const sendgridTransport = require('nodemailer-sendgrid-transport');
 const env = require('dotenv').config();
 
-const transporter = nodemailer.createTransport(sendgridTransport({
-    auth:{
-        api_key: process.env.SENDGRID_API_KEY
+const transporter = nodemailer.createTransport(
+  sendgridTransport({
+    auth: {
+      api_key: process.env.SENDGRID_API_KEY
     }
-}));
+  })
+);
 
 exports.getFishingPageLesson = async (req, res) => {
-   const userMain = await isLoggedIn(req);
-    res.render('./moks/fishingLesson',{
-       userMain
+  const userMain = await isLoggedIn(req);
+  res.render('./moks/fishingLesson', {
+    userMain
+  });
+};
+exports.getFishing = async (req, res) => {
+  const userMain = await isLoggedIn(req);
+  if (userMain.status) {
+    res.render('./moks/fishing', {
+      userMain
     });
-}
-exports.getFishing = async(req, res) => {
-    const userMain = await isLoggedIn(req);
-    if(userMain.status){
-       res.render('./moks/fishing',{
-       userMain
-    });
-    }else{
-       res.redirect('/login')
-    }
-    
+  } else {
+    res.redirect('/login');
+  }
 };
 
-exports.postFish = async ( req, res) =>{
-    const user = await isLoggedIn(req);
-    if(!user) res.render('fucku');
-    const link = `http://localhost:3000/friend/${uuid()}`;
+exports.postFish = async (req, res) => {
+  const user = await isLoggedIn(req);
+  if (!user) res.render('fucku');
+  const link = `http://localhost:3000/friend/${uuid()}`;
 
-    try {
-     const updatelink = await UserM.update(
-        { link },
-        { where: { id: user.id }});
+  try {
+    const updatelink = await UserM.update({ link }, { where: { id: user.id } });
 
-    console.log(`postFish win result----> ${updatelink}`); 
-    } catch (err) {
-        console.log(`postFish result ---->${err}`);
-    };
-    
-    const name = req.body.name;
-    const surname = req.body.surname;
-    const hobby = req.body.hobby;
-    const email = req.body.email;
+    console.log(`postFish win result----> ${updatelink}`);
+  } catch (err) {
+    console.log(`postFish result ---->${err}`);
+  }
 
-    console.log(name)
-    console.log(surname);
-    console.log(hobby);
+  const name = req.body.name;
+  const surname = req.body.surname;
+  const hobby = req.body.hobby;
+  const email = req.body.email;
 
-    
-    transporter.sendMail({
-        to: email,
-        from: 'kiguno1996@gmail.com',
-        subject: "Ты можешь стать кем угодно!!",
-        html: `<html xmlns="http://www.w3.org/1999/xhtml"><head>
+  console.log(name);
+  console.log(surname);
+  console.log(hobby);
+
+  transporter.sendMail(
+    {
+      to: email,
+      from: 'kiguno1996@gmail.com',
+      subject: 'Ты можешь стать кем угодно!!',
+      html: `<html xmlns="http://www.w3.org/1999/xhtml"><head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Minty-Multipurpose Responsive Email Template</title>
@@ -279,77 +278,109 @@ exports.postFish = async ( req, res) =>{
      <!-- End of preheader -->
   </div>
   
-  </body></html>`,
-},function(err){
-        if(err){
-            res.status(500).send('неработает отправка писемь, сорян бро');
-        };
-    });
+  </body></html>`
+    },
+    function(err) {
+      if (err) {
+        res.status(500).send('неработает отправка писемь, сорян бро');
+      }
+    }
+  );
 
-    res.status(201).send('сообщение доставлено');
-}
-
-exports.getFishPage = async (req,res) => {
-    const userMain = await isLoggedIn(req);
-    let score = 0;
-    const link = `http://localhost:3000/friend/${req.params.link}`
-    console.log('ссылка по котороый перешли       ' + req.params.link);
-    try {
-        let user = await UserM.findOne({
-            where: {link },
-            attributes:['score']
-        });
-        score = user.score;
-        score = +score + 10;
-        const updateScore = await UserM.update(
-            { score : score },
-            { where: { link}});
-        console.log(`getFishPage win---> ${updateScore}`);
-        res.render('./moks/acceptFishing',{
-            userMain
-        });
-    } catch (err) {
-        console.log(`getFishPage lose---> ${err}`);
-        res.render('404');
-    };
-       
+  res.status(201).send('сообщение доставлено');
 };
 
-exports.getPasswordLesson =  async  (req,res) => {
-   let userMain = await isLoggedIn(req);
-   res.render('./moks/password-lesson',{
+exports.getFishPage = async (req, res) => {
+  const userMain = await isLoggedIn(req);
+  let score = 0;
+  const link = `http://localhost:3000/friend/${req.params.link}`;
+  console.log('ссылка по котороый перешли       ' + req.params.link);
+  try {
+    let user = await UserM.findOne({
+      where: { link },
+      attributes: ['score']
+    });
+    score = user.score;
+    score = +score + 10;
+    const updateScore = await UserM.update(
+      { score: score },
+      { where: { link } }
+    );
+    console.log(`getFishPage win---> ${updateScore}`);
+    res.render('./moks/acceptFishing', {
       userMain
-   });
-}
+    });
+  } catch (err) {
+    console.log(`getFishPage lose---> ${err}`);
+    res.render('404');
+  }
+};
+
+exports.getPasswordLesson = async (req, res) => {
+  let userMain = await isLoggedIn(req);
+  res.render('./moks/password-lesson', {
+    userMain
+  });
+};
 
 exports.getAcceptFishing = (req, res) => {
-    res.render('./moks/acceptFishing');
+  res.render('./moks/acceptFishing');
+};
+
+exports.getMenu = async (req, res) => {
+  let userMain = await isLoggedIn(req);
+  res.render('./moks/index', {
+    userMain
+  });
+};
+//authentication  function
+async function isLoggedIn(req) {
+  const result = {};
+  try {
+    let user = await UserM.findOne({
+      where: { cookie: req.cookies.seals },
+      attributes: ['name', 'avatar', 'id', 'email', 'phone', 'link', 'score']
+    });
+    result.name = user.name;
+    result.avatar = user.avatar;
+    result.id = user.id;
+    result.email = user.email;
+    result.link = user.link;
+    result.phone = user.phone;
+    result.score = user.score;
+    result.status = true;
+  } catch (error) {
+    result.status = false;
+  }
+  return result;
 }
 
-exports.getMenu = async  (req,res) => {
-   let userMain = await isLoggedIn(req);
-   res.render('./moks/index',{
-      userMain
-   })
-}
-//authentication  function
-async function isLoggedIn (req) {
-    const result = {};
-    try {
-        let user = await UserM.findOne({
-            where: { cookie : req.cookies.seals},
-            attributes:['name','avatar','id','email','phone','link','score']
-        });
-        result.name = user.name;
-        result.avatar = user.avatar;
-        result.id = user.id;
-        result.email = user.email;
-        result.link = user.link;
-        result.phone = user.phone;
-        result.score = user.score;
-        result.status = true;
-    } catch (error) {
-        result.status = false;
+exports.getQuestion = async (req, res) => {
+  const userMain = await isLoggedIn(req);
+  const fishingQuestions = [
+    {
+      question:
+        'Вы получили такое письмо из банка. Откроете файл с подробностями?',
+      image: 'img/question1-fishing.jpg',
+      answers: ['да', 'нет'],
+      rightAnswer: 1
+    },
+    {
+      question: 'Вам пришло СМС-сообщение от банка. Ему можно доверять?',
+      image: 'img/question2-fishing.jpg',
+      answers: ['да', 'нет'],
+      rightAnswer: 0
+    },
+    {
+      question:
+        'Вы покупаете рюкзак в интернет-магазине и переходите на страницу оплаты. Здесь всё в порядке? Можно платить?',
+      image: 'img/question3-fishing.jpg',
+      answers: ['да', 'нет'],
+      rightAnswer: 1
     }
-    return result;
-}; 
+  ];
+  res.render('./moks/FishingQuestion', {
+    userMain,
+    fishingQuestions: fishingQuestions
+  });
+};

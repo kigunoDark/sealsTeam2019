@@ -1,0 +1,30 @@
+.fishing-question-img {
+  width: 550px;
+}
+
+.fishing-questions-wrapper {
+  margin: 40px auto;
+}
+
+.question-wrapper {
+  padding: 30px;
+}
+
+.form-questions-button {
+  display: block;
+  margin: auto;
+}
+
+.answers-form {
+  margin: 50px auto;
+}
+
+.questions-labels {
+  margin: auto 40px;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.form-answer-container {
+  margin: 30px auto;
+}
