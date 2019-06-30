@@ -144,6 +144,30 @@ nav a {
     color: #949494
 }
 
+.brand-logo.brand-logo__link {
+    display: relative;
+}
+
+.brand-logo.brand-logo__link.visible-score::before {
+    width: 30px;
+    height: 30px;
+    content: attr(data-attr);
+    background: #61da70;
+    border: 2px solid white;
+    border-radius: 15px;
+    display: flex;
+    line-height: 0;
+    top: 5%;
+    position: absolute;
+    left: 5%;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+
+}
+
+
+
 /* media query */
 
 @media screen and (max-width: 992px) {
