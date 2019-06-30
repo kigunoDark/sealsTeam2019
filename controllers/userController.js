@@ -41,12 +41,16 @@ async function isLoggedIn (req) {
     try {
         let user = await UserM.findOne({
             where: { cookie : req.cookies.seals},
-            attributes:['name','avatar','id']
+            attributes:['name','avatar','id','email','phone','link','score']
         });
         result.name = user.name;
         result.avatar = user.avatar;
         result.id = user.id;
         result.status = true;
+        result.email = user.email;
+        result.phone = user.phone;
+        result.link = user.link;
+        result.score = user.score;
     } catch (error) {
         result.status = false;
     }
@@ -54,46 +58,36 @@ async function isLoggedIn (req) {
 };
 
 
-exports.getReginster = (req, res) => {
+exports.getReginster = async (req, res) => {
+    const userMain =await isLoggedIn(req);
     res.render('moks/userRegister',{
+        userMain,
         msg: null
     });
 }
 
-exports.getMoksLand = async (req, res) => {
+exports.getMainPage = async (req, res) => {
+    const userMain = await isLoggedIn(req);
     res.render('moks/landing', {
+        userMain,
         msg: null
     });
 };
 
 exports.getLogin = async (req,res) => {
+    const userMain =await isLoggedIn(req);
     res.render('moks/login',{
+        userMain,
         msg: null
     });
 };
 
-exports.getAvatar = async (req , res) => {
-    const name = req.params.name;
-    UserM.findOne({
-        where: { name : name},
-        attributes:['name','avatar']
-    })
-    .then(user =>{
-        res.render('moks/avatarTest',{
-            name: user.name,
-            avatar: `../uploads/${user.avatar}`
-        });
-    })
-    .catch(err => {
-        console.log(`Error ----> ${err}`);
-    });
-    
-};
-
-exports.postMoksland = async (req, res) => {
+exports.postRegister = async (req, res) => {
+    const userMain = await isLoggedIn(req);
     upload(req, res, (err) => {
         if(err){
-          res.render('moks/moks', {
+          res.render('moks/userRegister', {
+            userMain,
             msg: err
           });
         } else {
@@ -128,10 +122,11 @@ exports.postMoksland = async (req, res) => {
                     score:${user.score}`);
     
                     res.cookie('seals',cookie, { maxAge:86400000, httpOnly: true });
-                    res.status(201).send('ok');
+                    res.redirect('/');
                 })
                 .catch(err =>{
-                    res.render('moks/moks', {
+                    res.render('moks/userRegister', {
+                        userMain,
                         msg: err
                       });
                     console.log(err);
@@ -171,6 +166,7 @@ exports.postMoksland = async (req, res) => {
 };
 
 exports.postLogin = async (req , res) => {
+    let userMain = await isLoggedIn(req);
     console.log(req.body)
     const hash = crypto.createHmac('sha256', 'SEALS')
                    .update(req.body.password)
@@ -183,31 +179,24 @@ exports.postLogin = async (req , res) => {
         if(user.password === hash){
             console.log(`${req.body.name} авторизировался`)
             res.cookie('seals',user.cookie, { maxAge:86400000, httpOnly: true });
-            res.status(200).send(`С возвращением ${req.body.name}`);
+            res.redirect('/')
         }else{
             res.render('moks/login',{
+                userMain,
                 msg: 'Неверный Пароль'
             });
         }
     })
     .catch(err =>{
         res.render('moks/login',{
+            userMain,
             msg: 'Пользователя с таким именем не существует' 
         });
     })
 };
 
-exports.authentication = async (req, res) => {
-    const user = await isLoggedIn(req);
-    if(user.status){
-        console.log(`user ${user.name} авторизовался`);
-        res.status(200).send(`name - ${user.name}<br> id - ${user.id}<br> avatar - ${user.avatar}`);
-    }else{ 
-        res.status(401).send('Вы не авторизованы');
-    }
-};
 
-exports.logout = async  (req,res) => {
+exports.getLogout = async  (req,res) => {
     res.clearCookie('seals');
     res.redirect('/');
 };

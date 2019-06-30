@@ -11,8 +11,16 @@ const transporter = nodemailer.createTransport(sendgridTransport({
 }));
 
 
-exports.getFishing = (req, res) => {
-    res.render('./moks/fishing');
+exports.getFishing = async(req, res) => {
+    const userMain = await isLoggedIn(req);
+    if(userMain.status){
+       res.render('./moks/fishing',{
+       userMain
+    });
+    }else{
+       res.redirect('/login')
+    }
+    
 };
 
 exports.postFish = async ( req, res) =>{
@@ -277,6 +285,7 @@ exports.postFish = async ( req, res) =>{
 }
 
 exports.getFishPage = async (req,res) => {
+    const userMain = await isLoggedIn(req);
     let score = 0;
     const link = `http://localhost:3000/friend/${req.params.link}`
     console.log('ссылка по котороый перешли       ' + req.params.link);
@@ -291,7 +300,9 @@ exports.getFishPage = async (req,res) => {
             { score : score },
             { where: { link}});
         console.log(`getFishPage win---> ${updateScore}`);
-        res.render('./moks/acceptFishing');
+        res.render('./moks/acceptFishing',{
+            userMain
+        });
     } catch (err) {
         console.log(`getFishPage lose---> ${err}`);
         res.render('404');
@@ -317,11 +328,11 @@ async function isLoggedIn (req) {
         result.name = user.name;
         result.avatar = user.avatar;
         result.id = user.id;
-        result.status = true;
         result.email = user.email;
         result.link = user.link;
         result.phone = user.phone;
         result.score = user.score;
+        result.status = true;
     } catch (error) {
         result.status = false;
     }
