@@ -25,9 +25,10 @@
 
       <ul class="right hide-on-med-and-down top-navbar">
       <% if(userMain.status) {%>
-       
-         <li><a  class="navlink" href="/register">Профиль</a></li>
-          <li><a  class="navlink" href="/logout">Выход</a></li>
+
+         <li><a  class="navlink" href="/register"><img class="avatar" src="/uploads/<%= userMain.avatar%>"></a></li>
+         <li><a  class="navlink" href="/logout">Выход</a></li>
+          
       <% } else { %>
         <li><a  class="navlink" href="/register">Регистрация</a></li>
         <li><a class="navlink" href="/login">Войти</a></li>

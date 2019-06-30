@@ -139,7 +139,11 @@ nav{
     text-transform: uppercase;
     color: white;
 }
-
+.avatar{
+    max-width: 50px;
+    max-height: 50px;
+    border-radius: 50%;
+}
 .header-block__paragraph {
     color: white;
     /*  word-break: break-all; */
