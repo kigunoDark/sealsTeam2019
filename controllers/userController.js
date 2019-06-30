@@ -122,7 +122,7 @@ exports.postRegister = async (req, res) => {
                     score:${user.score}`);
     
                     res.cookie('seals',cookie, { maxAge:86400000, httpOnly: true });
-                    res.redirect('/');
+                    res.redirect('/ciberlexa');
                 })
                 .catch(err =>{
                     res.render('moks/userRegister', {
@@ -179,7 +179,7 @@ exports.postLogin = async (req , res) => {
         if(user.password === hash){
             console.log(`${req.body.name} авторизировался`)
             res.cookie('seals',user.cookie, { maxAge:86400000, httpOnly: true });
-            res.redirect('/')
+            res.redirect('/ciberlexa')
         }else{
             res.render('moks/login',{
                 userMain,

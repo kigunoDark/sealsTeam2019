@@ -1,14 +1,14 @@
 <%- include('../layouts/navbar.ejs')%>
 
 <div class="container fishingform">
-    <h1> Поймай своего друга! </h1>
-    <form action="/friendFish" method="POST"> 
+    <h3 class="title"> Поймай своего друга! </h3>
+    <form id="friend-fish" action="/friendFish" method="POST"> 
         <input placeholder="Имя друга" name="name"/> 
         <input placeholder="Фамилия друга" name="surname"/><br><br>
         <input  placeholder="Хобби" name="hobby"/><br><br> 
         <input placeholder="Email address"  name="email"/> <br> <br>
 
-        <button type="submit"> Принять </button>
+         <a class="right waves-effect waves-light btn reg-button" href="javascript:{}" onclick="document.getElementById('friend-fish').submit();">Принять</a>
     <form>  
 </div>
 
