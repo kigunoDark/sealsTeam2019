@@ -7,7 +7,6 @@ router.get('/acceptFish', gameControl.getAcceptFishing);
 router.get('/password-lesson', gameControl.getPasswordLesson);
 router.get('/fishing-lesson', gameControl.getFishingPageLesson);
 router.get('/ciberlexa', gameControl.getMenu);
-router.post('/frend-fish',  gameControl.postFish);
 router.post('/friendFish',  gameControl.postFish);
 
 //test

@@ -30,7 +30,7 @@ exports.getFishing = async(req, res) => {
 
 exports.postFish = async ( req, res) =>{
     const user = await isLoggedIn(req);
-    if(!user) res.render('fucku');
+    if(!user) res.redirect('/');
     const link = `http://localhost:3000/friend/${uuid()}`;
 
     try {
@@ -285,8 +285,7 @@ exports.postFish = async ( req, res) =>{
             res.status(500).send('неработает отправка писемь, сорян бро');
         };
     });
-
-    res.status(201).send('сообщение доставлено');
+   res.redirect('/ciberlexa');
 }
 
 exports.getFishPage = async (req,res) => {
