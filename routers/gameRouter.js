@@ -11,5 +11,6 @@ router.post('/friendFish',  gameControl.postFish);
 
 //test
 router.get('/friend/:link', gameControl.getFishPage);
+router.post('/returnFish/:link',gameControl.returnFish);
 
 module.exports =  router;
