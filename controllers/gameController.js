@@ -310,6 +310,13 @@ exports.getFishPage = async (req,res) => {
        
 };
 
+exports.getPasswordLesson =  async  (req,res) => {
+   let userMain = await isLoggedIn(req);
+   res.render('./moks/password-lesson',{
+      userMain
+   });
+}
+
 exports.getAcceptFishing = (req, res) => {
     res.render('./moks/acceptFishing');
 }

@@ -1,7 +1,23 @@
 @import url("./timeline.css");
+@import url("./inputPassword.css");
+@import url("./passwordPage.css");
 
+.password-section__main-text{
+    text-align: justify;
+    font-size: 18px;
+}
+.password-section__subtitle{
+    color: #61da70;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 20px;
+    margin-bottom: 3%;
+}
 body {
     background: #f3ffdc;
+
+    max-width: 1600px;
+    margin: auto;
 }
 
 nav{
@@ -62,7 +78,7 @@ nav{
 }
 
 .img-main-background {
-    background-image: url("../img/1020_preobrazovanny.png");
+    background-image: url("../img/1020_preobrazovanny_withBlackScreen.png");
     background-size: contain;
     background-position-x: 70%;
     background-repeat: no-repeat;
